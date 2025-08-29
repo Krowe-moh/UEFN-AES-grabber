@@ -29,10 +29,11 @@ node .
 
 2. When prompted, enter the **Map Code** (e.g. 6155-1398-4059`) and press Enter.  
 
-3. You'll need to enter the authentication site. Once authorized, the script will output the AES key:
+3. You'll need to enter the authentication site. Once authorized, the script will output:
 
 ```
-0xAB12CDEF1234567890...
+AES Key: 0x4323390EC79FC7ADCB7574F8DD58763F36806CB33B80F4E32B3DDAA04B88351C
+GUID: a70e0ff5-8e7e-4977-89e9-f3fb36823453
 ```
 ---
 

@@ -34,7 +34,6 @@ const readline = require("readline");
                     }),
                     { headers }
                 );
-                console.log(data);
                 savedAuth = data;
             } catch {
                 console.warn("Device auth expired, re-logging…");
@@ -43,7 +42,6 @@ const readline = require("readline");
         }
 
         if (!savedAuth) savedAuth = await Login();
-                console.log(savedAuth);
 
         const rl = readline.createInterface({
             input: process.stdin,
@@ -72,7 +70,8 @@ const readline = require("readline");
                     "Content-Type": "application/json",
                 },
             });
-            console.log(`AES: 0x${Buffer.from(keyResponse.data[0].key.Key, "base64").toString("hex").toUpperCase()}`);
+            console.log(`AES Key: 0x${Buffer.from(keyResponse.data[0].key.Key, "base64").toString("hex").toUpperCase()}`);
+            console.log(`GUID: ${keyResponse.data[0].key.Guid}`);
         } else {
             console.error("Map is not encrypted");
         }
