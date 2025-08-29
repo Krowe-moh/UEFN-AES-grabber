@@ -1,4 +1,4 @@
-# AES Grabber (UEFN maps)
+# UEFN AES Grabber
 
 A simple Node.js script to get AES for maps
 
@@ -27,7 +27,7 @@ npm i
 node .
 ```
 
-2. When prompted, enter the **Map Code** (e.g. 6155-1398-4059`) and press Enter.  
+2. When prompted, enter the **Map Code** (e.g. `6155-1398-4059`) and press Enter.  
 
 3. You'll need to enter the authentication site. Once authorized, the script will output:
 
