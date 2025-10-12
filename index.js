@@ -56,7 +56,7 @@ const readline = require("readline");
         if (!mapCode) throw new Error("Map code cannot be empty");
 
         const { data: mappingsData } = await axios.get("https://fortnitecentral.genxgames.gg/api/v1/mappings");
-        const versionMatch = mappingsData[0]?.meta?.version?.match(/Release-(\d+)\.(\d+)-CL-(\d+)/);
+        const versionMatch = mappingsData?.version.match(/Release-(\d+)\.(\d+)-CL-(\d+)/);
         const [major, minor, cl] = versionMatch.slice(1);
 
         const { data } = await axios.get(`https://content-service.bfda.live.use1a.on.epicgames.com/api/content/v2/link/${mapCode}/cooked-content-package?role=client&platform=windows&major=${major}&minor=${minor}&patch=${cl}`, {
