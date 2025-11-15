@@ -7,7 +7,7 @@ function sleep(ms) {
 
 async function Login() {
     const { data: tokenResponse } = await axios.post("https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token", new URLSearchParams({ grant_type: "client_credentials" }).toString(), {
-        headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: `Basic OThmN2U0MmMyZTNhNGY4NmE3NGViNDNmYmI0MWVkMzk6MGEyNDQ5YTItMDAxYS00NTFlLWFmZWMtM2U4MTI5MDFjNGQ3` },
+        headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: `Basic NzlhOTMxYjM3NTMzNDU3MGFjMzY5MjM0ZjVkYTA1ZWM6ZWU3MzM1ZGYzYzRhNDEyY2I1NzA1NWFiN2FkZTY5M2U=` },
     });
     const { data: device } = await axios.post(
         "https://account-public-service-prod.ol.epicgames.com/account/api/oauth/deviceAuthorization",
@@ -32,7 +32,7 @@ async function Login() {
                 {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
-                        Authorization: "Basic OThmN2U0MmMyZTNhNGY4NmE3NGViNDNmYmI0MWVkMzk6MGEyNDQ5YTItMDAxYS00NTFlLWFmZWMtM2U4MTI5MDFjNGQ3",
+                        Authorization: "Basic NzlhOTMxYjM3NTMzNDU3MGFjMzY5MjM0ZjVkYTA1ZWM6ZWU3MzM1ZGYzYzRhNDEyY2I1NzA1NWFiN2FkZTY5M2U=",
                     },
                 }
             );
@@ -47,7 +47,17 @@ async function Login() {
 
     console.log(`Logged in as account ${token.displayName}`);
 
-    const { data: deviceAuth } = await axios.post(`https://account-public-service-prod.ol.epicgames.com/account/api/public/account/${token.account_id}/deviceAuth`, {}, { headers: { Authorization: `Bearer ${token.access_token}` } });
+    const request = await axios.get(`https://account-public-service-prod.ol.epicgames.com/account/api/oauth/exchange`, {
+        headers: {
+            Authorization: `Bearer ${token.access_token}`,
+        },
+    });
+
+    const { data: tokenResponse2 } = await axios.post("https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token", new URLSearchParams({ grant_type: "exchange_code", exchange_code: request.data.code }).toString(), {
+        headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: `Basic M2Y2OWU1NmM3NjQ5NDkyYzhjYzI5ZjFhZjA4YThhMTI6YjUxZWU5Y2IxMjIzNGY1MGE2OWVmYTY3ZWY1MzgxMmU=` },
+    });
+
+    const { data: deviceAuth } = await axios.post(`https://account-public-service-prod.ol.epicgames.com/account/api/public/account/${token.account_id}/deviceAuth`, {}, { headers: { Authorization: `Bearer ${tokenResponse2.access_token}` } });
 
     const output = {
         displayName: token.displayName,

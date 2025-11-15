@@ -19,7 +19,7 @@ const readline = require("readline");
         if (savedAuth) {
             const headers = {
                 "Content-Type": "application/x-www-form-urlencoded",
-                Authorization: "Basic OThmN2U0MmMyZTNhNGY4NmE3NGViNDNmYmI0MWVkMzk6MGEyNDQ5YTItMDAxYS00NTFlLWFmZWMtM2U4MTI5MDFjNGQ3",
+                Authorization: "Basic M2Y2OWU1NmM3NjQ5NDkyYzhjYzI5ZjFhZjA4YThhMTI6YjUxZWU5Y2IxMjIzNGY1MGE2OWVmYTY3ZWY1MzgxMmU=",
             };
 
             try {

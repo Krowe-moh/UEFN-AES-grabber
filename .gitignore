@@ -1,3 +1,4 @@
 node_modules/
+test/
 deviceAuth.json
 package-lock.json
