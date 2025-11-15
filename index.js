@@ -43,6 +43,18 @@ const readline = require("readline");
 
         if (!savedAuth) savedAuth = await Login();
 
+        const request = await axios.get(`https://account-public-service-prod.ol.epicgames.com/account/api/oauth/exchange`, {
+            headers: {
+                Authorization: `Bearer ${savedAuth.access_token}`,
+            },
+        });
+
+        const { data: tokenResponse2 } = await axios.post("https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token", new URLSearchParams({ grant_type: "exchange_code", exchange_code: request.data.code }).toString(), {
+            headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: `Basic M2UxM2M1YzU3ZjU5NGE1NzhhYmU1MTZlZWNiNjczZmU6NTMwZTMxNmMzMzdlNDA5ODkzYzU1ZWM0NGYyMmNkNjI=` },
+        });
+
+        savedAuth = tokenResponse2;
+
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout,
