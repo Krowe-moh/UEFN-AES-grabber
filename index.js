@@ -71,7 +71,7 @@ const readline = require("readline");
         const versionMatch = mappingsData?.version.match(/Release-(\d+)\.(\d+)-CL-(\d+)/);
         const [major, minor, cl] = versionMatch.slice(1);
 
-        const { data } = await axios.get(`https://content-service.bfda.live.use1a.on.epicgames.com/api/content/v2/link/${mapCode}/cooked-content-package?role=client&platform=windows&major=${major}&minor=${minor}&patch=${cl}`, {
+        const { data } = await axios.get(`https://content-service.bfda.live.use1a.on.epicgames.com/api/content/v4/cooked-content-package/link/${mapCode}?role=client&platform=windows&major=${major}&minor=${minor}&patch=${cl}`, {
             headers: { Authorization: `bearer ${savedAuth.access_token}` },
         });
 
