@@ -67,7 +67,7 @@ const readline = require("readline");
         );
         if (!mapCode) throw new Error("Map code cannot be empty");
 
-        const { data: mappingsData } = await axios.get("https://export-service-new.dillyapis.com/v1/mappings");
+        const { data: mappingsData } = await axios.get("https://uedb.dev/svc/api/v1/fortnite/mappings");
         const versionMatch = mappingsData?.version.match(/Release-(\d+)\.(\d+)-CL-(\d+)/);
         const [major, minor, cl] = versionMatch.slice(1);
 
