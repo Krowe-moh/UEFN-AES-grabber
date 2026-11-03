@@ -27,13 +27,13 @@ npm i
 node .
 ```
 
-2. When prompted, enter the **Map Code** (e.g. `6155-1398-4059`) and press Enter.  
+2. When prompted, enter the **Map Code** (e.g. `7865-8305-9184`) and press Enter.  
 
 3. You'll need to enter the authentication site. Once authorized, the script will output:
 
 ```
-AES Key: 0x4323390EC79FC7ADCB7574F8DD58763F36806CB33B80F4E32B3DDAA04B88351C
-GUID: a70e0ff5-8e7e-4977-89e9-f3fb36823453
+AES Key: 0x5E70F4FBAC54F34CF86770232296964A751A22ED32D07FC53758F6ED82B4585C
+GUID: d195f274-470a-4631-ae88-0acd5d612143
 ```
 ---
 
